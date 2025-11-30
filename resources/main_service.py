@@ -82,20 +82,35 @@ maintainsmartplaylist = True if __setting__("maintainsmartplaylist") == "true" e
 if promptduration == 0:
     promptduration = 1 / 1000.0
 
-# get the current version of XBMC
+# get the current version of Kodi
 versstr = xbmc.executeJSONRPC(
     '{ "jsonrpc": "2.0", "method": "Application.GetProperties", "params": {"properties": ["version", "name"]}, "id": 1 }'
 )
 vers = json.loads(versstr)
-if (
-    "result" in vers
-    and "version" in vers["result"]
-    and (
-        int(vers["result"]["version"]["major"]) > 12
-        or int(vers["result"]["version"]["major"]) == 12
-        and int(vers["result"]["version"]["minor"]) > 8
-    )
-):
+__kodi_major__ = 21  # Default to Omega
+__kodi_minor__ = 0
+if "result" in vers and "version" in vers["result"]:
+    __kodi_major__ = int(vers["result"]["version"].get("major", 21))
+    __kodi_minor__ = int(vers["result"]["version"].get("minor", 0))
+
+# Determine Kodi release name
+if __kodi_major__ >= 21:
+    __release__ = "Omega"
+elif __kodi_major__ >= 20:
+    __release__ = "Nexus"
+elif __kodi_major__ >= 19:
+    __release__ = "Matrix"
+elif __kodi_major__ >= 18:
+    __release__ = "Leia"
+elif __kodi_major__ >= 17:
+    __release__ = "Krypton"
+elif __kodi_major__ >= 16:
+    __release__ = "Jarvis"
+elif __kodi_major__ >= 15:
+    __release__ = "Isengard"
+elif __kodi_major__ >= 14:
+    __release__ = "Helix"
+elif __kodi_major__ >= 13:
     __release__ = "Gotham"
 else:
     __release__ = "Frodo"
@@ -451,8 +466,7 @@ class LazyPlayer(xbmc.Player):
                         # show notification
                         usr_note = DIALOG.yesno(
                             lang(32160),
-                            lang(32161) % (showtitle, stored_seas, stored_epis),
-                            lang(32162),
+                            lang(32161) % (showtitle, stored_seas, stored_epis) + "\n" + lang(32162)
                         )
                         log(usr_note)
 
@@ -617,8 +631,7 @@ class LazyPlayer(xbmc.Player):
                 if promptduration:
                     prompt = DIALOG.yesno(
                         lang(32167) % promptduration,
-                        lang(32168) % (pre_title, SE),
-                        lang(32169),
+                        (lang(32168) % (pre_title, SE)) + "\n" + lang(32169),
                         yeslabel=ylabel,
                         nolabel=nlabel,
                         autoclose=int(promptduration * 1000),
@@ -626,8 +639,7 @@ class LazyPlayer(xbmc.Player):
                 else:
                     prompt = DIALOG.yesno(
                         lang(32167) % promptduration,
-                        lang(32168) % (pre_title, SE),
-                        lang(32169),
+                        (lang(32168) % (pre_title, SE)) + "\n" + lang(32169),
                         yeslabel=ylabel,
                         nolabel=nlabel,
                     )

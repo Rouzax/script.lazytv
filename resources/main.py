@@ -409,7 +409,7 @@ def get_TVshows():
         p = stringlist_to_reallist(nepl_from_service)
         nepl_stored = [int(x) for x in p]
     else:
-        dialog.ok("LazyTV", lang(32115), lang(32116))
+        dialog.ok("LazyTV", lang(32115) + "\n" + lang(32116))
         sys.exit()
 
     nepl = sort_shows(nepl_retrieved, nepl_stored)
@@ -1376,7 +1376,7 @@ def main_entry():
     if primary_function == "2":
 
         # assume this is selection
-        choice = dialog.yesno("LazyTV", lang(32100), "", lang(32101), lang(32102), lang(32103))
+        choice = dialog.yesno("LazyTV", lang(32100) + "\n" + lang(32101), nolabel=lang(32102), yeslabel=lang(32103))
         if choice < 0:
             sys.exit()
 
@@ -1457,7 +1457,7 @@ def run():
     log("entered LazyTV")
 
     if WINDOW.getProperty("LazyTV_service_running") == "starting":
-        dialog.ok("LazyTV", lang(32115), lang(32116))
+        dialog.ok("LazyTV", lang(32115) + "\n" + lang(32116))
         sys.exit()
 
     # call to the service wait 500 for response
@@ -1479,7 +1479,7 @@ def run():
     if not service_lives:
         log("service not running")
 
-        ans = dialog.yesno("LazyTV", lang(32106), lang(32107))
+        ans = dialog.yesno("LazyTV", lang(32106) + "\n" + lang(32107))
 
         if ans == 1:
             # this will always happen after the first install. The addon service is not auto started after install.
@@ -1516,7 +1516,7 @@ def run():
             and __addonid__ != "script.lazytv"
         ):
             log("clone out of date")
-            clone_upd = dialog.yesno("LazyTV", lang(32110), lang(32111))
+            clone_upd = dialog.yesno("LazyTV", lang(32110) + "\n" + lang(32111))
 
             # this section is to determine if the clone needs to be up-dated with the new version
             # it checks the clone's version against the services version.

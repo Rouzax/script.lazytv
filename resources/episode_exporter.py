@@ -229,7 +229,7 @@ def get_TVshows():
         p = stringlist_to_reallist(nepl_from_service)
         nepl_stored = [int(x) for x in p]
     else:
-        dialog.ok("LazyTV", lang(32115), lang(32116))
+        dialog.ok("LazyTV", lang(32115) + "\n" + lang(32116))
         sys.exit()
 
     nepl = [x["tvshowid"] for x in nepl_retrieved if x["tvshowid"] in nepl_stored]
@@ -307,7 +307,7 @@ def Main():
     dProgress.close()
 
     if failures:
-        ans = dialog.yesno("LazyTV", lang(32182), lang(32183))
+        ans = dialog.yesno("LazyTV", lang(32182) + "\n" + lang(32183))
 
         if ans:
             # populate list view with file names in alphabetical order

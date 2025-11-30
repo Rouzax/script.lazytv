@@ -82,14 +82,14 @@ def errorHandle(exception, trace, new_path=False):
     log(str(exception))
     log(str(trace))
 
-    dialog.ok("LazyTV", lang(32140), lang(32141))
+    dialog.ok("LazyTV", lang(32140) + "\n" + lang(32141))
     if new_path:
         shutil.rmtree(new_path, ignore_errors=True)
     sys.exit()
 
 
 def Main():
-    first_q = dialog.yesno("LazyTV", lang(32142), lang(32143), lang(32144))
+    first_q = dialog.yesno("LazyTV", lang(32142) + "\n" + lang(32143), nolabel=lang(32144))
     if first_q != 1:
         sys.exit()
     else:
@@ -183,7 +183,7 @@ def Main():
     except Exception:
         pass
 
-    dialog.ok("LazyTV", lang(32146), lang(32147))
+    dialog.ok("LazyTV", lang(32146) + "\n" + lang(32147))
 
 
 if __name__ == "__main__":

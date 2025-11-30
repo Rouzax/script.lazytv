@@ -1,3 +1,12 @@
+3.1.0 (2024)
+- Updated for Kodi v21 (Omega) compatibility
+- Fixed deprecated Dialog API usage (yesno, ok with multiple lines)
+- Updated Kodi version detection for Omega and future versions
+- Updated settings.xml to version 2 format for Kodi v21
+- Updated addon.xml with proper Kodi v21 requirements
+- Code cleanup and Python 3 compatibility improvements
+- Fixed service startup configuration
+
 0.9.92
 Updated language files from Transifex
 

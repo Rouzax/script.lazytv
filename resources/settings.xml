@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
- <!-- gap -->
+ <!-- General Settings -->
  <category label="32000">
  <setting id="lsep0" label="32001" type="lsep" enable="false"/>
  <setting id="primary_function" label="" type="enum" lvalues="32002|32003|32004"/>
@@ -16,8 +16,9 @@
  <setting id="maintainsmartplaylist" type="bool" label="32093" default="false"/>
  <setting id="ordersmartplaylist" label="32254" type="bool" enable="eq(-1,true)" default="false"/>
  <setting id="startup" type="bool" label="32253" default="true"/>
- <!-- gap -->
  </category>
+
+ <!-- Random Playlist Settings -->
  <category label="32030">
  <setting id="length" label="32031" type="slider" default="5" range="1,1,50" option="int" />
  <setting id="multipleshows" type="bool" label="32032" default="false"/>
@@ -29,33 +30,33 @@
  <setting id="moviesw" type="bool" label="32037" default="false"/>
  <setting id="moviemid" type="bool" label="32038" enable="eq(-1,true)" subsetting="true" default="false"/>
  <setting type="lsep" label="32039" enable="false"/>
- <setting id="movieweight" type="slider" label="32040" enable="eq(-3,true)|eq(-4,true)" option='float' range="0,0.1,1" default="1.0"/>
+ <setting id="movieweight" type="slider" label="32040" enable="eq(-3,true)|eq(-4,true)" option="float" range="0,0.1,1" default="1.0"/>
  <setting type="lsep" label="32041" enable="false"/>
  <setting type="lsep" label="32042" enable="false"/>
  <setting id="noshow" type="bool" label="32043" enable="eq(-6,true)|eq(-7,true)" default="false"/>
- <!-- gap -->
  </category>
+
+ <!-- Show Me Window Settings -->
  <category label="32060">
  <setting id="skinorno" type="enum" label="32072" lvalues="32073|32074|32075" default="0"/>
  <setting id="skin_return" type="bool" label="32076" default="true"/>
- <!--setting id="skinorno" type="bool" label="32072" default="true"/-->
  <setting id="limitshows" type="bool" label="32061" default="false"/>
  <setting id="window_length" label="32062" enable="eq(-1,true)" type="slider" default="10" range="1,1,30" option="int" />
  <setting type="lsep" label="32063" enable="false"/>
- <setting id="sort_by" type="enum" label="32070" lvalues="32064|32065|32066|32067|32068" default="32065"/>
+ <setting id="sort_by" type="enum" label="32070" lvalues="32064|32065|32066|32067|32068" default="1"/>
  <setting id="sort_reverse" type="bool" label="32071" default="false"/>
  <setting id="excl_randos" type="bool" label="32251" default="false"/>
- <!-- gap -->
  </category>
+
+ <!-- Advanced Settings -->
  <category label="32080">
  <setting id="nextprompt" type="bool" label="32081" default="true"/>
  <setting id="promptduration" label="32082" type="slider" enable="eq(-1,true)" subsetting="true" default="20" range="0,5,60" option="int" />
- <setting id="promptdefaultaction" type="enum" label="32090" enable="eq(-2,true)" lvalues="32091|32092" default="32091"/>
+ <setting id="promptdefaultaction" type="enum" label="32090" enable="eq(-2,true)" lvalues="32091|32092" default="0"/>
  <setting id="nextprompt_or" type="bool" label="32252" enable="eq(-3,true)" default="false"/>
  <setting id="prevcheck" type="bool" label="32083" default="false"/>
  <setting type="lsep" label="32084" enable="false"/>
  
-
  <setting type="lsep" label=""/>
  <setting id="logging" type="bool" label="32085" default="true"/>
  <setting type="lsep" label="32086" enable="false"/>
@@ -63,10 +64,10 @@
  <setting type="lsep" label="" enable="false"/>
  <setting type="action" label="32094" option="close" action="RunScript($CWD/resources/episode_exporter.py)"/>
 
+ <!-- Hidden settings -->
  <setting id="first_run" type="bool" default="true" visible="false"/>
- <setting id="users_spl" type="text" visible="false" default='none'/>
- <setting id="randos" type="text" visible="false" default='none'/>
- <setting id="selection" type="text" visible="false" default='none'/>
- <!-- gap -->
+ <setting id="users_spl" type="text" visible="false" default="none"/>
+ <setting id="randos" type="text" visible="false" default="none"/>
+ <setting id="selection" type="text" visible="false" default="none"/>
  </category>
 </settings>
